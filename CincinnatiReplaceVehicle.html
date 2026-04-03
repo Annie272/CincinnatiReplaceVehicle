@@ -14,6 +14,21 @@
         font-size: 12px;
         line-height: 1.4;
       }
+      .helper-note {
+        font-size: 12px;
+        color: #6b7280;
+        margin-top: 4px;
+      }
+        .disclaimer-box {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #dc2626;
+    font-style: italic;
+    font-weight: 700;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-top: 4px;
+      }
     </style>
   </head>
   <body class="bg-gray-100 flex items-center justify-center min-h-screen p-6">
@@ -45,14 +60,7 @@
           <label for="email" class="block text-sm font-medium text-gray-700">
             Email<span class="star">*</span>
           </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            class="mt-1 w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
-            autocomplete="off"
-            required
-          />
+          <input type="email" id="email" name="email" class="mt-1 w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" autocomplete="off" required />
         </div>
 
         <fieldset class="mb-4">
@@ -82,7 +90,7 @@
             type="text"
             id="00NU7000005zuX3"
             name="Policy_Number__c"
-            class="mt-1 w-full p-2 border border-gray-300 rounded-lg shadow-sm"
+            class="mt-1 w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
             autocomplete="off"
             required
           />
@@ -180,20 +188,25 @@
         </fieldset>
 
         <div class="mb-4">
-          <label for="00NU700000616Sv" class="block text-sm font-medium text-gray-700">
-            VIN Number of New Vehicle<span class="star">*</span>
-          </label>
-          <input
-            type="text"
-            id="00NU700000616Sv"
-            name="00NU700000616Sv"
-            maxlength="255"
-            class="mt-1 w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
-            autocomplete="off"
-            required
-          />
-        </div>
-
+  <label for="00NU700000616Sv" class="block text-sm font-medium text-gray-700">
+    VIN Number of New Vehicle<span class="star">*</span>
+  </label>
+  <input
+    type="text"
+    id="00NU700000616Sv"
+    name="00NU700000616Sv"
+    maxlength="255"
+    class="mt-1 w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+    autocomplete="off"
+    required
+  />
+  <div class="disclaimer-box">
+    Please check if the VIN you are trying to add is valid or not by referring here
+    <a href="https://www.carfax.com/" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline">
+      [https://www.carfax.com/]
+    </a>
+  </div>
+</div>
         <div class="mb-4">
           <label for="00NU7000007EGYk" class="block text-sm font-medium text-gray-700">
             New Vehicle Year<span class="star">*</span>
@@ -234,6 +247,21 @@
             id="00NU700000616Xl"
             name="00NU700000616Xl"
             maxlength="255"
+            class="mt-1 w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            autocomplete="off"
+            required
+          />
+        </div>
+
+        <div class="mb-4">
+          <label for="00NU7000008lT1x" class="block text-sm font-medium text-gray-700">
+            Car New Cost Value<span class="star">*</span>
+          </label>
+          <input
+            type="text"
+            id="00NU7000008lT1x"
+            name="00NU7000008lT1x"
+            maxlength="100"
             class="mt-1 w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
             autocomplete="off"
             required
@@ -396,9 +424,17 @@
       document.addEventListener("DOMContentLoaded", function () {
         let picker = null;
         let yearPicker = null;
-
         const dateInput = document.getElementById("00NU7000005zuLl");
         const yearInput = document.getElementById("00NU7000007EGYk");
+        const policyInput = document.getElementById("00NU7000005zuX3");
+
+        if (policyInput) {
+          policyInput.addEventListener("input", function () {
+            const compact = this.value.replace(/\s+/g, "").replace(/[^A-Za-z0-9]/g, "");
+            if (compact.length <= 3) this.value = compact;
+            else this.value = `${compact.slice(0, 3)} ${compact.slice(3)}`;
+          });
+        }
 
         if (window.Pikaday && dateInput) {
           picker = new Pikaday({
@@ -451,7 +487,6 @@
               }
             }
           });
-
           yearInput.addEventListener("input", () => {
             yearInput.value = yearInput.value.replace(/\D/g, "").slice(0, 4);
           });
@@ -474,7 +509,6 @@
         syncCheckboxToHidden("00NU7000008Absz", "00NU7000008Absz");
         syncCheckboxToHidden("00NU7000008Aduj", "00NU7000008Aduj");
 
-        // Make Replacement Cost and GAP Coverage mutually exclusive
         const replacementCostCheckbox = document.getElementById("00NU7000008Absz");
         const gapCoverageCheckbox = document.getElementById("00NU7000008Aduj");
         if (replacementCostCheckbox && gapCoverageCheckbox) {
@@ -496,7 +530,6 @@
 
         const customEquipCheckbox = document.getElementById("00NU7000008AYAI");
         const customPartsField = document.getElementById("customPartsField");
-
         function toggleCustomParts() {
           if (customEquipCheckbox && customEquipCheckbox.checked) {
             customPartsField.classList.remove("hidden");
@@ -505,7 +538,6 @@
             document.getElementById("00NU7000007QrCj").value = "";
           }
         }
-
         if (customEquipCheckbox) {
           customEquipCheckbox.addEventListener("change", toggleCustomParts);
           toggleCustomParts();
@@ -513,7 +545,6 @@
 
         const requestRadios = document.querySelectorAll('input[name="requestTypeRadios"]');
         const requestHiddenSelect = document.getElementById("00NU7000006IOzh");
-
         function syncRequestType() {
           const checkedRadio = document.querySelector('input[name="requestTypeRadios"]:checked');
           requestHiddenSelect.value = checkedRadio ? checkedRadio.value : "";
@@ -551,7 +582,7 @@
         const requiredFields = [
           { id: "email", label: "Email", type: "email" },
           { radioGroupName: "requestTypeRadios", label: "Select the Request Type:" },
-          { id: "00NU7000005zuX3", label: "Policy Number" },
+          { id: "00NU7000005zuX3", label: "Policy Number", type: "policy" },
           { id: "00NU7000005zuLl", label: "Effective Date (MM/DD/YYYY)", type: "date" },
           { radioGroupName: "oldVinRadios", label: "Do you know the VIN of the Old Vehicle?" },
           { id: "vinOld", label: "VIN Number of Old Vehicle" },
@@ -559,7 +590,8 @@
           { id: "00NU700000616Sv", label: "VIN Number of New Vehicle" },
           { id: "00NU7000007EGYk", label: "New Vehicle Year", type: "year" },
           { id: "00NU700000616W9", label: "New Vehicle Make" },
-          { id: "00NU700000616Xl", label: "New Vehicle Model" }
+          { id: "00NU700000616Xl", label: "New Vehicle Model" },
+          { id: "00NU7000008lT1x", label: "Car New Cost Value" }
         ];
 
         function formatDateForJSON(dateString) {
@@ -568,10 +600,15 @@
           return `${y}-${m.padStart(2, "0")}-${d.padStart(2, "0")}`;
         }
 
+        function formatPolicyNumberHidden(val) {
+          const compact = (val || "").replace(/\s+/g, "").replace(/[^A-Za-z0-9]/g, "");
+          if (compact.length <= 3) return compact;
+          return `${compact.slice(0, 3)} ${compact.slice(3)}`;
+        }
+
         function captureAllFormDataAsJSON() {
           const formData = {};
           const formElements = form.querySelectorAll("input, textarea, select");
-
           formElements.forEach(element => {
             if (
               !element.name ||
@@ -602,6 +639,7 @@
               "00NU7000007EGYk": "Vehicle_Year",
               "00NU700000616W9": "Make",
               "00NU700000616Xl": "Model",
+              "00NU7000008lT1x": "Car_New_Cost_Value",
               "00NU7000007ALC1": "Other_than_Collision",
               "00NU7000008AbwA": "Full_Safety_Glass",
               "00NU700000618cn": "Collision",
@@ -617,6 +655,8 @@
 
             if (fieldName === "Effective_Date" && element.value) {
               formData[fieldName] = formatDateForJSON(element.value);
+            } else if (fieldName === "Policy_Number") {
+              formData[fieldName] = formatPolicyNumberHidden(element.value);
             } else {
               formData[fieldName] = element.value || "";
             }
@@ -627,6 +667,10 @@
 
         function validateYear(val) {
           return /^[0-9]{4}$/.test(val);
+        }
+
+        function validatePolicyNumber(val) {
+          return /^[A-Za-z0-9]{3}\s[A-Za-z0-9].*/.test(formatPolicyNumberHidden(val).trim());
         }
 
         function validateFields() {
@@ -652,6 +696,8 @@
             } else if (field.type === "year") {
               const val = el.value.trim();
               if (!val || !validateYear(val)) missing.push(field.label);
+            } else if (field.type === "policy") {
+              if (!el.value.trim() || !validatePolicyNumber(el.value)) missing.push(field.label);
             } else {
               if (!el.value.trim()) missing.push(field.label);
             }
