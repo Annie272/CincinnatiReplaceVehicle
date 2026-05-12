@@ -19,15 +19,15 @@
         color: #6b7280;
         margin-top: 4px;
       }
-        .disclaimer-box {
-    background: #fef2f2;
-    border: 1px solid #fecaca;
-    color: #dc2626;
-    font-style: italic;
-    font-weight: 700;
-    padding: 8px 12px;
-    border-radius: 8px;
-    margin-top: 4px;
+      .disclaimer-box {
+        background: #fef2f2;
+        border: 1px solid #fecaca;
+        color: #dc2626;
+        font-style: italic;
+        font-weight: 700;
+        padding: 8px 12px;
+        border-radius: 8px;
+        margin-top: 4px;
       }
     </style>
   </head>
@@ -60,7 +60,14 @@
           <label for="email" class="block text-sm font-medium text-gray-700">
             Email<span class="star">*</span>
           </label>
-          <input type="email" id="email" name="email" class="mt-1 w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" autocomplete="off" required />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="mt-1 w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            autocomplete="off"
+            required
+          />
         </div>
 
         <fieldset class="mb-4">
@@ -130,26 +137,84 @@
           />
         </div>
 
-        <fieldset class="mb-4">
-          <legend class="block text-sm font-medium text-gray-700 mb-2">
-            Do you know the VIN of the Old Vehicle?<span class="star">*</span>
-          </legend>
-          <div class="flex space-x-6">
-            <label class="inline-flex items-center">
-              <input type="radio" name="oldVinRadios" value="Y" class="mr-2" required />
-              Yes
-            </label>
-            <label class="inline-flex items-center">
-              <input type="radio" name="oldVinRadios" value="N" class="mr-2" required />
-              No
-            </label>
+        <div class="mb-4">
+          <div class="disclaimer-box">
+            Hey, could you please check the policy declaration page we sent over email? In the column under Additional Coverages can you confirm whether there is <strong>Capstone Auto Endorsement</strong>?
           </div>
-          <select id="00NU7000006DHIv" name="00NU7000006DHIv" class="hidden" required>
-            <option value="">--None--</option>
-            <option value="Y">Y</option>
-            <option value="N">N</option>
-          </select>
-        </fieldset>
+        </div>
+
+        <div class="mb-4">
+          <fieldset>
+            <legend class="block text-sm font-medium text-gray-700 mb-1">
+              If Capstone Policy or Not:<span class="star">*</span>
+            </legend>
+            <div class="flex space-x-6">
+              <label class="inline-flex items-center">
+                <input type="radio" name="IfCapstonePolicyRadios" value="Y" class="mr-2" />Yes
+              </label>
+              <label class="inline-flex items-center">
+                <input type="radio" name="IfCapstonePolicyRadios" value="N" class="mr-2" />No
+              </label>
+            </div>
+            <input type="hidden" id="00NU7000009B269" name="IfCapstonePolicy" value="" />
+          </fieldset>
+        </div>
+
+        <div class="mb-4">
+          <label for="00NU7000009B2Cb" class="block text-sm font-medium text-gray-700">
+            User Agreed Value<span class="star">*</span>
+          </label>
+          <input
+            id="00NU7000009B2Cb"
+            maxlength="50"
+            name="00NU7000009B2Cb"
+            size="20"
+            type="text"
+            class="mt-1 w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            autocomplete="off"
+            disabled
+            required
+          />
+        </div>
+
+        <div class="mb-4">
+          <label for="00NU7000008lT1x" class="block text-sm font-medium text-gray-700">
+            Car New Cost Value<span class="star">*</span>
+          </label>
+          <input
+            type="text"
+            id="00NU7000008lT1x"
+            name="00NU7000008lT1x"
+            maxlength="100"
+            class="mt-1 w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            autocomplete="off"
+            disabled
+            required
+          />
+        </div>
+
+        <div class="mb-4">
+          <fieldset class="mb-4">
+            <legend class="block text-sm font-medium text-gray-700 mb-2">
+              Do you know the VIN of the Old Vehicle?<span class="star">*</span>
+            </legend>
+            <div class="flex space-x-6">
+              <label class="inline-flex items-center">
+                <input type="radio" name="oldVinRadios" value="Y" class="mr-2" required />
+                Yes
+              </label>
+              <label class="inline-flex items-center">
+                <input type="radio" name="oldVinRadios" value="N" class="mr-2" required />
+                No
+              </label>
+            </div>
+            <select id="00NU7000006DHIv" name="00NU7000006DHIv" class="hidden" required>
+              <option value="">--None--</option>
+              <option value="Y">Y</option>
+              <option value="N">N</option>
+            </select>
+          </fieldset>
+        </div>
 
         <div class="mb-4">
           <label for="vinOld" class="block text-sm font-medium text-gray-700">
@@ -188,25 +253,26 @@
         </fieldset>
 
         <div class="mb-4">
-  <label for="00NU700000616Sv" class="block text-sm font-medium text-gray-700">
-    VIN Number of New Vehicle<span class="star">*</span>
-  </label>
-  <input
-    type="text"
-    id="00NU700000616Sv"
-    name="00NU700000616Sv"
-    maxlength="255"
-    class="mt-1 w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
-    autocomplete="off"
-    required
-  />
-  <div class="disclaimer-box">
-    Please check if the VIN you are trying to add is valid or not by referring here
-    <a href="https://www.carfax.com/" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline">
-      [https://www.carfax.com/]
-    </a>
-  </div>
-</div>
+          <label for="00NU700000616Sv" class="block text-sm font-medium text-gray-700">
+            VIN Number of New Vehicle<span class="star">*</span>
+          </label>
+          <input
+            type="text"
+            id="00NU700000616Sv"
+            name="00NU700000616Sv"
+            maxlength="255"
+            class="mt-1 w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            autocomplete="off"
+            required
+          />
+          <div class="disclaimer-box">
+            Please check if the VIN you are trying to add is valid or not by referring here
+            <a href="https://www.carfax.com/" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline">
+              [https://www.carfax.com/]
+            </a>
+          </div>
+        </div>
+
         <div class="mb-4">
           <label for="00NU7000007EGYk" class="block text-sm font-medium text-gray-700">
             New Vehicle Year<span class="star">*</span>
@@ -252,21 +318,6 @@
             required
           />
         </div>
-
-        <div class="mb-4">
-          <label for="00NU7000008lT1x" class="block text-sm font-medium text-gray-700">
-            Car New Cost Value<span class="star">*</span>
-          </label>
-          <input
-            type="text"
-            id="00NU7000008lT1x"
-            name="00NU7000008lT1x"
-            maxlength="100"
-            class="mt-1 w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
-            autocomplete="off"
-            required
-          />
-        </div>
       </section>
 
       <section class="bg-gray-50 border rounded-xl p-6 shadow-inner" aria-label="Coverages Section">
@@ -276,7 +327,11 @@
           <label for="00NU7000007ALC1" class="block text-sm font-medium text-gray-700">
             Other Than Collision
           </label>
-          <select id="00NU7000007ALC1" name="00NU7000007ALC1" class="mt-1 w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
+          <select
+            id="00NU7000007ALC1"
+            name="00NU7000007ALC1"
+            class="mt-1 w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+          >
             <option value="N/A">N/A</option>
             <option value="250">250</option>
             <option value="500">500</option>
@@ -290,7 +345,13 @@
 
         <div class="mb-4">
           <label class="flex items-center p-3 border border-gray-300 rounded-lg shadow-sm hover:bg-gray-50 cursor-pointer w-full">
-            <input type="checkbox" id="00NU7000008AbwA" name="00NU7000008AbwA" value="Y" class="mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" />
+            <input
+              type="checkbox"
+              id="00NU7000008AbwA"
+              name="00NU7000008AbwA"
+              value="Y"
+              class="mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+            />
             <span class="text-sm font-medium text-gray-700">Full Safety Glass</span>
           </label>
           <input type="hidden" name="00NU7000008AbwA" value="N" />
@@ -300,7 +361,11 @@
           <label for="00NU700000618cn" class="block text-sm font-medium text-gray-700">
             Collision
           </label>
-          <select id="00NU700000618cn" name="00NU700000618cn" class="mt-1 w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
+          <select
+            id="00NU700000618cn"
+            name="00NU700000618cn"
+            class="mt-1 w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+          >
             <option value="N/A">N/A</option>
             <option value="250">250</option>
             <option value="500">500</option>
@@ -314,7 +379,13 @@
 
         <div class="mb-4">
           <label class="flex items-center p-3 border border-gray-300 rounded-lg shadow-sm hover:bg-gray-50 cursor-pointer w-full">
-            <input type="checkbox" id="00NU7000008AYAI" name="00NU7000008AYAI" value="Y" class="mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" />
+            <input
+              type="checkbox"
+              id="00NU7000008AYAI"
+              name="00NU7000008AYAI"
+              value="Y"
+              class="mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+            />
             <span class="text-sm font-medium text-gray-700">Customizing Equipment</span>
           </label>
           <input type="hidden" name="00NU7000008AYAI" value="N" />
@@ -338,7 +409,11 @@
           <label for="00NU700000618hd" class="block text-sm font-medium text-gray-700">
             Roadside Assistance
           </label>
-          <select id="00NU700000618hd" name="00NU700000618hd" class="mt-1 w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
+          <select
+            id="00NU700000618hd"
+            name="00NU700000618hd"
+            class="mt-1 w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+          >
             <option value="N/A">N/A</option>
             <option value="Standard - 25 Miles in network or $150 out of network">Standard - 25 Miles in network or $150 out of network</option>
             <option value="Plus - 50 Miles in network or $250 out of network">Plus - 50 Miles in network or $250 out of network</option>
@@ -350,7 +425,11 @@
           <label for="00NU7000008Adt7" class="block text-sm font-medium text-gray-700">
             Transportation Expense
           </label>
-          <select id="00NU7000008Adt7" name="00NU7000008Adt7" class="mt-1 w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
+          <select
+            id="00NU7000008Adt7"
+            name="00NU7000008Adt7"
+            class="mt-1 w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+          >
             <option value="">--None--</option>
             <option value="N/A">N/A</option>
             <option value="30/900">30/900</option>
@@ -362,7 +441,13 @@
 
         <div class="mb-4">
           <label class="flex items-center p-3 border border-gray-300 rounded-lg shadow-sm hover:bg-gray-50 cursor-pointer w-full">
-            <input type="checkbox" id="00NU7000008Absz" name="00NU7000008Absz" value="Y" class="mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" />
+            <input
+              type="checkbox"
+              id="00NU7000008Absz"
+              name="00NU7000008Absz"
+              value="Y"
+              class="mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+            />
             <span class="text-sm font-medium text-gray-700">Replacement Cost</span>
           </label>
           <input type="hidden" name="00NU7000008Absz" value="N" />
@@ -370,7 +455,13 @@
 
         <div class="mb-4">
           <label class="flex items-center p-3 border border-gray-300 rounded-lg shadow-sm hover:bg-gray-50 cursor-pointer w-full">
-            <input type="checkbox" id="00NU7000008Aduj" name="00NU7000008Aduj" value="Y" class="mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" />
+            <input
+              type="checkbox"
+              id="00NU7000008Aduj"
+              name="00NU7000008Aduj"
+              value="Y"
+              class="mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+            />
             <span class="text-sm font-medium text-gray-700">GAP Coverage</span>
           </label>
           <input type="hidden" name="00NU7000008Aduj" value="N" />
@@ -392,7 +483,11 @@
       <input type="hidden" name="company" value="Cincinnati" />
 
       <div class="flex justify-end mt-6">
-        <button type="button" id="reviewBtn" class="bg-blue-600 text-white font-semibold py-2 px-4 rounded-xl hover:bg-blue-700 transition">
+        <button
+          type="button"
+          id="reviewBtn"
+          class="bg-blue-600 text-white font-semibold py-2 px-4 rounded-xl hover:bg-blue-700 transition"
+        >
           Review and Submit
         </button>
       </div>
@@ -409,10 +504,16 @@
         <h3 id="dialogTitle" class="text-lg font-semibold mb-4"></h3>
         <ul id="missingFieldsList" class="mb-4 text-red-600 text-sm"></ul>
         <div class="flex justify-end space-x-3" id="dialogButtons">
-          <button id="proceedBtn" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 font-medium">
+          <button
+            id="proceedBtn"
+            class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 font-medium"
+          >
             Proceed to End Request
           </button>
-          <button id="editBtn" class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400 font-medium">
+          <button
+            id="editBtn"
+            class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400 font-medium"
+          >
             Edit
           </button>
         </div>
@@ -427,6 +528,19 @@
         const dateInput = document.getElementById("00NU7000005zuLl");
         const yearInput = document.getElementById("00NU7000007EGYk");
         const policyInput = document.getElementById("00NU7000005zuX3");
+        const form = document.getElementById("mainForm");
+        const reviewBtn = document.getElementById("reviewBtn");
+        const dialog = document.getElementById("dialog");
+        const dialogTitle = document.getElementById("dialogTitle");
+        const missingFieldsList = document.getElementById("missingFieldsList");
+        const proceedBtn = document.getElementById("proceedBtn");
+        const editBtn = document.getElementById("editBtn");
+        const allFormDataTextarea = document.getElementById("00NU7000008TS4L");
+
+        const capstoneRadios = document.querySelectorAll('input[name="IfCapstonePolicyRadios"]');
+        const capstoneHidden = document.getElementById("00NU7000009B269");
+        const userAgreedValue = document.getElementById("00NU7000009B2Cb");
+        const carNewCostValue = document.getElementById("00NU7000008lT1x");
 
         if (policyInput) {
           policyInput.addEventListener("input", function () {
@@ -487,6 +601,7 @@
               }
             }
           });
+
           yearInput.addEventListener("input", () => {
             yearInput.value = yearInput.value.replace(/\D/g, "").slice(0, 4);
           });
@@ -570,14 +685,41 @@
         newVinRadios.forEach(radio => radio.addEventListener("change", syncNewVin));
         syncNewVin();
 
-        const reviewBtn = document.getElementById("reviewBtn");
-        const dialog = document.getElementById("dialog");
-        const dialogTitle = document.getElementById("dialogTitle");
-        const missingFieldsList = document.getElementById("missingFieldsList");
-        const proceedBtn = document.getElementById("proceedBtn");
-        const editBtn = document.getElementById("editBtn");
-        const form = document.getElementById("mainForm");
-        const allFormDataTextarea = document.getElementById("00NU7000008TS4L");
+        function getCapstoneValue() {
+          const checked = document.querySelector('input[name="IfCapstonePolicyRadios"]:checked');
+          return checked ? checked.value : "";
+        }
+
+        function toggleCapstoneFields() {
+          const val = getCapstoneValue();
+          if (capstoneHidden) capstoneHidden.value = val;
+
+          if (val === "Y") {
+            userAgreedValue.disabled = false;
+            userAgreedValue.required = true;
+            userAgreedValue.value = "";
+            carNewCostValue.value = "";
+            carNewCostValue.disabled = true;
+            carNewCostValue.required = false;
+          } else if (val === "N") {
+            carNewCostValue.disabled = false;
+            carNewCostValue.required = true;
+            carNewCostValue.value = "";
+            userAgreedValue.value = "";
+            userAgreedValue.disabled = true;
+            userAgreedValue.required = false;
+          } else {
+            userAgreedValue.value = "";
+            carNewCostValue.value = "";
+            userAgreedValue.disabled = true;
+            carNewCostValue.disabled = true;
+            userAgreedValue.required = false;
+            carNewCostValue.required = false;
+          }
+        }
+
+        capstoneRadios.forEach(r => r.addEventListener("change", toggleCapstoneFields));
+        toggleCapstoneFields();
 
         const requiredFields = [
           { id: "email", label: "Email", type: "email" },
@@ -591,7 +733,9 @@
           { id: "00NU7000007EGYk", label: "New Vehicle Year", type: "year" },
           { id: "00NU700000616W9", label: "New Vehicle Make" },
           { id: "00NU700000616Xl", label: "New Vehicle Model" },
-          { id: "00NU7000008lT1x", label: "Car New Cost Value" }
+          { id: "00NU7000009B269", label: "If Capstone Policy or Not:", type: "capstone" },
+          { id: "00NU7000009B2Cb", label: "User Agreed Value", type: "capstoneY" },
+          { id: "00NU7000008lT1x", label: "Car New Cost Value", type: "capstoneN" }
         ];
 
         function formatDateForJSON(dateString) {
@@ -609,6 +753,8 @@
         function captureAllFormDataAsJSON() {
           const formData = {};
           const formElements = form.querySelectorAll("input, textarea, select");
+          const capstoneVal = getCapstoneValue();
+
           formElements.forEach(element => {
             if (
               !element.name ||
@@ -617,7 +763,8 @@
               element.name === "00NU7000008TS4L" ||
               element.name === "requestTypeRadios" ||
               element.name === "oldVinRadios" ||
-              element.name === "newVinRadios"
+              element.name === "newVinRadios" ||
+              element.name === "IfCapstonePolicyRadios"
             ) return;
 
             let fieldName = element.name.replace(/__c$/, "");
@@ -639,6 +786,8 @@
               "00NU7000007EGYk": "Vehicle_Year",
               "00NU700000616W9": "Make",
               "00NU700000616Xl": "Model",
+              "00NU7000009B269": "IfCapstonePolicy",
+              "00NU7000009B2Cb": "User_Agreed_Value",
               "00NU7000008lT1x": "Car_New_Cost_Value",
               "00NU7000007ALC1": "Other_than_Collision",
               "00NU7000008AbwA": "Full_Safety_Glass",
@@ -657,6 +806,12 @@
               formData[fieldName] = formatDateForJSON(element.value);
             } else if (fieldName === "Policy_Number") {
               formData[fieldName] = formatPolicyNumberHidden(element.value);
+            } else if (fieldName === "User_Agreed_Value" && capstoneVal !== "Y") {
+              formData[fieldName] = "";
+            } else if (fieldName === "Car_New_Cost_Value" && capstoneVal !== "N") {
+              formData[fieldName] = "";
+            } else if (fieldName === "If_Capstone_Policy") {
+              formData[fieldName] = capstoneVal;
             } else {
               formData[fieldName] = element.value || "";
             }
@@ -675,6 +830,7 @@
 
         function validateFields() {
           const missing = [];
+          const capstoneVal = getCapstoneValue();
 
           requiredFields.forEach(field => {
             if (field.radioGroupName) {
@@ -694,10 +850,15 @@
               const dateRegex = /^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/(19|20)\d{2}$/;
               if (!val || !dateRegex.test(val)) missing.push(field.label);
             } else if (field.type === "year") {
-              const val = el.value.trim();
-              if (!val || !validateYear(val)) missing.push(field.label);
+              if (!validateYear(el.value.trim())) missing.push(field.label);
             } else if (field.type === "policy") {
               if (!el.value.trim() || !validatePolicyNumber(el.value)) missing.push(field.label);
+            } else if (field.type === "capstone") {
+              if (!capstoneVal) missing.push(field.label);
+            } else if (field.type === "capstoneY") {
+              if (capstoneVal === "Y" && !el.value.trim()) missing.push(field.label);
+            } else if (field.type === "capstoneN") {
+              if (capstoneVal === "N" && !el.value.trim()) missing.push(field.label);
             } else {
               if (!el.value.trim()) missing.push(field.label);
             }
@@ -708,6 +869,9 @@
 
         function captureFormData() {
           if (picker && picker.getDate()) dateInput.value = picker.toString();
+
+          const capstoneVal = getCapstoneValue();
+          if (capstoneHidden) capstoneHidden.value = capstoneVal;
 
           const missing = [];
           const filled = [];
@@ -722,7 +886,31 @@
             }
 
             const el = document.getElementById(field.id);
-            if (!el || !el.value.trim()) {
+            if (!el) return;
+
+            if (field.type === "capstone") {
+              if (!capstoneVal) missing.push(field.label);
+              else filled.push(`${field.label}: ${capstoneVal}`);
+              return;
+            }
+
+            if (field.type === "capstoneY") {
+              if (capstoneVal === "Y") {
+                if (el.value.trim()) filled.push(`User Agreed Value: ${el.value.trim()}`);
+                else missing.push("User Agreed Value");
+              }
+              return;
+            }
+
+            if (field.type === "capstoneN") {
+              if (capstoneVal === "N") {
+                if (el.value.trim()) filled.push(`Car New Cost Value: ${el.value.trim()}`);
+                else missing.push("Car New Cost Value");
+              }
+              return;
+            }
+
+            if (!el.value.trim()) {
               missing.push(field.label);
             } else {
               filled.push(`${field.label}: ${el.value.trim()}`);
